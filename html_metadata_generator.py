@@ -107,6 +107,8 @@ class HTMLMetadataTags:
             if self.video:
                 output += f"""\n<meta property="og:video" content="{self.video}">"""
 
+        output += "\n\n<!-- Metadata generated for this site by https://github.com/eepyfemboi/html-metadata-generator -->"
+
         return output
 
 
