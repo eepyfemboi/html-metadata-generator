@@ -74,12 +74,9 @@ function generate_html_metadata({
         output += `\n\n<!-- Descriptions -->\n<meta name="description" content="${description}">\n<meta property="og:description" content="${description}">\n<meta name="twitter:description" content="${description}">`;
     }
     
-    if (keywords) {
+    if (keywords && keywords.length > 0) {
         let keywords_ = Array.isArray(keywords) ? keywords.join(", ") : keywords;
-        keywords_ = keywords_.trim()
-        if (!keywords_ === "") {
-            output += `\n\n<!-- Keywords -->\n<meta name="keywords" content="${keywords_}">\n<meta name="news_keywords" content="${keywords_}">`;
-        }
+        output += `\n\n<!-- Keywords -->\n<meta name="keywords" content="${keywords_}">\n<meta name="news_keywords" content="${keywords_}">`;
     }
     
     if (url || canonical || site_name || twitter_site || twitter_creator) {
