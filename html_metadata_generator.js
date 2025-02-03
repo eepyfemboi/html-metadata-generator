@@ -40,18 +40,18 @@ The Software is provided "as-is," without warranty of any kind, express or impli
 
 
 function generate_html_metadata({
-    title = null,
-    description = null,
-    keywords = null,
-    url = null,
-    site_name = null,
-    image = null,
-    audio = null,
-    video = null,
-    canonical = null,
-    twitter_card = "summary",
-    twitter_creator = "@eepyfemboi",
-    twitter_site = "@eepyfemboi"
+    title,
+    description,
+    keywords,
+    url,
+    site_name,
+    image,
+    audio,
+    video,
+    canonical,
+    twitter_card,
+    twitter_creator,
+    twitter_site
 } = {}) {
     if (twitter_site && !twitter_site.startsWith("@")) {
         twitter_site = "@" + twitter_site;
@@ -75,8 +75,11 @@ function generate_html_metadata({
     }
     
     if (keywords) {
-        const keywords_ = Array.isArray(keywords) ? keywords.join(", ") : keywords;
-        output += `\n\n<!-- Keywords -->\n<meta name="keywords" content="${keywords_}">\n<meta name="news_keywords" content="${keywords_}">`;
+        let keywords_ = Array.isArray(keywords) ? keywords.join(", ") : keywords;
+        keywords_ = keywords_.trim()
+        if (!keywords_ === "") {
+            output += `\n\n<!-- Keywords -->\n<meta name="keywords" content="${keywords_}">\n<meta name="news_keywords" content="${keywords_}">`;
+        }
     }
     
     if (url || canonical || site_name || twitter_site || twitter_creator) {
