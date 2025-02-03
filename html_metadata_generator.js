@@ -110,6 +110,8 @@ function generate_html_metadata({
             output += `\n<meta property="og:video" content="${video}">`;
         }
     }
+
+    output += "\n\n<!-- Metadata generated for this site by https://github.com/eepyfemboi/html-metadata-generator -->"
     
     return output;
 }
